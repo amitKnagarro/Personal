@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Productivity Report - 6 Month Sprint</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }
+        .slide { background: white; padding: 30px; margin: 20px 0; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); page-break-after: always; }
+        h1 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
+        h2 { color: #34495e; }
+        .stats { display: flex; justify-content: space-around; margin: 20px 0; }
+        .stat-box { background: linear-gradient(45deg, #3498db, #2980b9); color: white; padding: 20px; border-radius: 10px; text-align: center; min-width: 150px; }
+        .stat-number { font-size: 2em; font-weight: bold; }
+        .highlight { background: #e8f5e8; padding: 15px; border-radius: 8px; border-left: 4px solid #27ae60; margin: 15px 0; }
+        .story-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; margin: 20px 0; }
+        .story-card { background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #3498db; }
+        ul { line-height: 1.8; }
+        .center { text-align: center; }
+        .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin: 20px 0; }
+        .cert-card { background: linear-gradient(45deg, #8e44ad, #9b59b6); color: white; padding: 18px; border-radius: 10px; text-align: center; }
+        .cert-card h4 { margin: 0 0 8px 0; color: white; }
+        .badge { background: #27ae60; color: white; padding: 3px 10px; border-radius: 12px; font-size: 0.8em; }
+        .nagp-box { background: linear-gradient(45deg, #e74c3c, #c0392b); color: white; padding: 25px; border-radius: 12px; text-align: center; margin: 20px 0; }
+        .future-box { background: linear-gradient(45deg, #0984e3, #74b9ff); color: white; padding: 20px; border-radius: 12px; margin: 15px 0; }
+        .chart-container { position: relative; height: 400px; margin: 30px 0; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .charts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; margin: 30px 0; }
+    </style>
+</head>
+<body>
+
+<div class="slide">
+    <h1 class="center">🚀 Individual Productivity Report</h1>
+    <div class="center">
+        <h2 style="color: #3498db;">Sprint Period: October 2025 – March 2026</h2>
+        <h3 style="color: #7f8c8d;">6-Month Development Sprint Summary</h3>
+        <div style="background: linear-gradient(45deg, #3498db, #2980b9); color: white; padding: 20px; border-radius: 10px; margin: 30px auto; max-width: 600px;">
+            <h3 style="margin: 0; color: white;">Productivity • Growth • Innovation</h3>
+            <p>17 Stories Delivered &nbsp;|&nbsp; 39 Story Points &nbsp;|&nbsp; 5+ AI Certifications &nbsp;|&nbsp; NAGP Program</p>
+        </div>
+    </div>
+</div>
+
+<div class="slide">
+    <h1>📊 Executive Summary</h1>
+    
+    <div class="stats">
+        <div class="stat-box">
+            <div class="stat-number">17</div>
+            <div>Stories Delivered</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-number">39</div>
+            <div>Story Points</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-number">6</div>
+            <div>Months Duration</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-number">100%</div>
+            <div>Delivery Rate</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-number">0</div>
+            <div>Production Issues</div>
+        </div>
+    </div>
+
+    <div class="highlight">
+        <h3>🎯 Key Achievements</h3>
+        <ul>
+            <li><strong>Major Feature Implementation:</strong> Led complete Acquisition Specialist user type integration across 7 stories — Task API, Appointment API, Alert API, Process Events UI, and NuGet upgrades</li>
+            <li><strong>DR Readiness & Infrastructure:</strong> Drove 5 Disaster Recovery stories — AppPool tagging, service account validation, MIME Monitor fixes, and SRE compliance</li>
+            <li><strong>Spartan Apps Transition:</strong> Successfully analyzed and onboarded 3 critical applications (Crm.Workflow.Task, CustomerReassign, Vin.Agent.Crm.Appointment) with full documentation</li>
+            <li><strong>Cross-Stack Impact:</strong> Delivered changes spanning UI, API, database, DevOps, and monitoring layers with zero production incidents</li>
+            <li><strong>Rapid Ramp-Up:</strong> Completed onboarding + full environment setup and became a productive contributor within the first sprint</li>
+        </ul>
+    </div>
+</div>
+
+<div class="slide">
+    <h1>📋 Work Categories Breakdown</h1>
+    
+    <div style="background: #f8f9fa; padding: 20px; border-radius: 10px;">
+        <h3>Stories by Category (18 Delivered + 1 In-Progress)</h3>
+        <ul style="font-size: 1.1em;">
+            <li><strong>Feature Development (Lead Ingestion):</strong> 7 stories (39%) — Acquisition Specialist across Task, Appointment, Alert APIs, Process Events UI & NuGet upgrades</li>
+            <li><strong>DR Readiness & Infrastructure:</strong> 5 stories (28%) — AppPool tagging, service validation, SRE compliance, MIME Monitor fix</li>
+            <li><strong>Spartan Apps Transition:</strong> 3 stories (17%) — Application analysis, config updates, README & test verification</li>
+            <li><strong>Onboarding & Environment Setup:</strong> 2 stories (11%) — Full-stack dev environment + tooling access</li>
+            <li><strong>Impact Analysis:</strong> 1 story (5%) — Cars.Objects upgrade assessment across CarDashboard</li>
+        </ul>
+    </div>
+
+    <h2>🛠️ Technical Skills Demonstrated</h2>
+    <div class="story-grid">
+        <div class="story-card">.NET/C# Backend Development</div>
+        <div class="story-card">Frontend (CarDashboard UI)</div>
+        <div class="story-card">REST API Design & Integration</div>
+        <div class="story-card">Database & Stored Procedures</div>
+        <div class="story-card">Unit Testing & QA</div>
+        <div class="story-card">DevOps (Octopus, Vault, NuGet)</div>
+        <div class="story-card">Monitoring (NewRelic, PagerDuty)</div>
+        <div class="story-card">DR Planning & SRE Compliance</div>
+    </div>
+</div>
+
+<div class="slide">
+    <h1>📝 Complete Story Portfolio</h1>
+    
+    <h3>🔵 Feature Development — New User Type Integration (7 Stories, 23 pts)</h3>
+    <div class="story-grid">
+        <div class="story-card">
+            <strong>Story 1</strong> — Process Event UI Enhancement <span class="badge">3 pts</span><br>
+            <em>Added new user type to workflow configuration UI with feature flag</em>
+        </div>
+        <div class="story-card">
+            <strong>Story 2</strong> — Task API Enhancement <span class="badge">5 pts</span><br>
+            <em>Backend enum, validation, payload handling & DB parameters</em>
+        </div>
+        <div class="story-card">
+            <strong>Story 3</strong> — Unit Test Coverage for Task API <span class="badge">5 pts</span><br>
+            <em>Comprehensive test coverage for new user type logic</em>
+        </div>
+        <div class="story-card">
+            <strong>Story 4</strong> — Automated Email Workflow Update <span class="badge">3 pts</span><br>
+            <em>Enabled automated email workflows for the new user type</em>
+        </div>
+        <div class="story-card">
+            <strong>Story 5</strong> — Appointment API Enhancement <span class="badge">3 pts</span><br>
+            <em>Enum, conversions, alert recipients & 4 new test cases</em>
+        </div>
+        <div class="story-card">
+            <strong>Story 6</strong> — Alert API Enhancement <span class="badge">3 pts</span><br>
+            <em>Updated AlertService & Agent with new user type support</em>
+        </div>
+        <div class="story-card">
+            <strong>Story 7</strong> — NuGet Package Upgrades <span class="badge">1 pt</span><br>
+            <em>Updated dependent packages to latest stable versions</em>
+        </div>
+    </div>
+
+    <h3>🟢 DR Readiness & Infrastructure (5 Stories, 6 pts)</h3>
+    <div class="story-grid">
+        <div class="story-card">
+            <strong>Story 8</strong> — AppPool Tagging for DR <span class="badge">2 pts</span><br>
+            <em>Cross-checked & updated component IDs for all team apps</em>
+        </div>
+        <div class="story-card">
+            <strong>Story 9</strong> — App Pool Dashboard Verification <span class="badge">1 pt</span><br>
+            <em>Verified all apps on centralized DR status dashboard</em>
+        </div>
+        <div class="story-card">
+            <strong>Story 10</strong> — Scheduled Tasks & Services Validation <span class="badge">1 pt</span><br>
+            <em>Verified service descriptions, ran runbooks, automated checklist</em>
+        </div>
+        <div class="story-card">
+            <strong>Story 11</strong> — Service Account Permissions Audit <span class="badge">1 pt</span><br>
+            <em>Checked & documented all service account permissions across clusters</em>
+        </div>
+        <div class="story-card">
+            <strong>Story 12</strong> — Monitoring Fix for Server Visibility <span class="badge">1 pt</span><br>
+            <em>Updated config for services not appearing in monitoring dashboard</em>
+        </div>
+    </div>
+
+    <h3>🟠 Application Ownership Transition (3 Stories, 8 pts)</h3>
+    <div class="story-grid">
+        <div class="story-card">
+            <strong>Story 13</strong> — Application Config & Readme Update <span class="badge">2 pts</span><br>
+            <em>Vault, NewRelic, PagerDuty & Octopus ownership transfer</em>
+        </div>
+        <div class="story-card">
+            <strong>Story 14</strong> — Application Analysis & Setup <span class="badge">3 pts</span><br>
+            <em>Code setup, test analysis, README creation</em>
+        </div>
+        <div class="story-card">
+            <strong>Story 15</strong> — Application Migration Analysis <span class="badge">3 pts</span><br>
+            <em>Config verification, post-deploy steps & README</em>
+        </div>
+        <div class="story-card" style="border-left-color: #f39c12;">
+            <strong>Story 19</strong> — New Initiative <span class="badge" style="background: #f39c12;">TBD pts — IN PROGRESS</span><br>
+            <em>Details to be updated</em>
+        </div>
+    </div>
+
+    <h3>🔵 Onboarding & Impact Analysis (3 Stories, 8 pts)</h3>
+    <div class="story-grid">
+        <div class="story-card">
+            <strong>Story 16</strong> — Team Onboarding <span class="badge">3 pts</span><br>
+            <em>Full access provisioning across all dev tools, cloud, and monitoring platforms</em>
+        </div>
+        <div class="story-card">
+            <strong>Story 17</strong> — Dev Environment Setup <span class="badge">2 pts</span><br>
+            <em>Complete local development environment setup and debugging</em>
+        </div>
+        <div class="story-card">
+            <strong>Story 18</strong> — Shared Library Upgrade Impact Analysis <span class="badge">3 pts</span><br>
+            <em>Thorough UI/code analysis, manual testing & test plan</em>
+        </div>
+    </div>
+</div>
+
+<div class="slide">
+    <h1>💼 Business Impact & Value</h1>
+    
+    <div class="highlight">
+        <h3>🎯 Strategic Business Value</h3>
+        <ul>
+            <li><strong>New Revenue-Driving User Type:</strong> Acquisition Specialist now fully integrated across Task, Appointment, Alert APIs and workflow UI — unblocking new dealer workflows</li>
+            <li><strong>DR Readiness:</strong> 5 DR stories ensured Endurance apps are fully compliant for failover exercises — reducing risk of service outage</li>
+            <li><strong>Operational Continuity:</strong> 3 Spartan Apps smoothly transitioned with full documentation, config ownership, and README — zero knowledge loss</li>
+            <li><strong>Cross-Stack Quality:</strong> All deliveries included unit tests, manual QA, and feature flags — zero production incidents</li>
+            <li><strong>Faster Time-to-Value:</strong> From onboarding to production deliveries within the first sprint — immediate team impact</li>
+        </ul>
+    </div>
+
+    <h2>📈 Productivity Metrics</h2>
+    <div class="stats">
+        <div class="stat-box" style="background: linear-gradient(45deg, #27ae60, #2ecc71);">
+            <div class="stat-number">~3</div>
+            <div>Stories/Month</div>
+        </div>
+        <div class="stat-box" style="background: linear-gradient(45deg, #e74c3c, #c0392b);">
+            <div class="stat-number">39</div>
+            <div>Story Points</div>
+        </div>
+        <div class="stat-box" style="background: linear-gradient(45deg, #f39c12, #d68910);">
+            <div class="stat-number">7</div>
+            <div>APIs & Services</div>
+        </div>
+        <div class="stat-box" style="background: linear-gradient(45deg, #8e44ad, #9b59b6);">
+            <div class="stat-number">100%</div>
+            <div>On-Time Delivery</div>
+        </div>
+    </div>
+</div>
+
+<div class="slide">
+    <h1>🎓 Personal Skill Development</h1>
+
+    <h2>🤖 AI & GenAI Certifications</h2>
+    <div class="cert-grid">
+        <div class="cert-card">
+            <h4>Oracle Gen AI Development</h4>
+            <span class="badge">✅ COMPLETED</span>
+            <p>Generative AI application development</p>
+        </div>
+        <div class="cert-card">
+            <h4>AI SDLC Level Up</h4>
+            <span class="badge">✅ COMPLETED</span>
+            <p>AI-enhanced software development lifecycle</p>
+        </div>
+        <div class="cert-card">
+            <h4>LinkedIn Gen AI Course</h4>
+            <span class="badge">✅ COMPLETED</span>
+            <p>Generative AI foundations & applications</p>
+        </div>
+        <div class="cert-card" style="background: linear-gradient(45deg, #2196f3, #1976d2);">
+            <h4>Azure AZ-900</h4>
+            <span class="badge">✅ COMPLETED</span>
+            <p>Microsoft Azure Fundamentals</p>
+        </div>
+        <div class="cert-card" style="background: linear-gradient(45deg, #ff9800, #f57c00);">
+            <h4>Microsoft Copilot Certification</h4>
+            <span class="badge">✅ COMPLETED</span>
+            <p>AI-powered development tools mastery</p>
+        </div>
+    </div>
+
+    <div class="highlight">
+        <h3>💡 Why It Matters</h3>
+        <p>Proactively building AI/ML expertise aligned with industry trends and organizational direction. These certifications ensure readiness to lead AI-driven development initiatives.</p>
+    </div>
+</div>
+
+<div class="slide">
+    <h1>⭐ Feedback & Recognition</h1>
+
+    <h2>🎯 Latest FPIP Feedback</h2>
+    <div style="background: linear-gradient(45deg, #f39c12, #e67e22); color: white; padding: 25px; border-radius: 12px; text-align: center; margin: 20px 0;">
+        <h3 style="margin: 0; color: white;">🏆 TOP EXEMPLARY</h3>
+        <p style="font-size: 1.2em; margin: 10px 0;">January Performance Review</p>
+    </div>
+
+    <h2>📊 Quarterly Feedback Summary</h2>
+    <div class="story-grid">
+        <div class="story-card" style="border-left-color: #27ae60;">
+            <h4>Q2 2025 – Q3 2025</h4>
+            <p style="font-size: 1.1em; font-weight: bold; color: #27ae60;">Highly Valuable</p>
+            <p>Strong performance and consistent delivery during mid-year period</p>
+        </div>
+        <div class="story-card" style="border-left-color: #f39c12;">
+            <h4>Q4 2025 – Q1 2026</h4>
+            <p style="font-size: 1.1em; font-weight: bold; color: #f39c12;">Coming Soon</p>
+            <p>End of year and quarterly performance review pending</p>
+        </div>
+    </div>
+
+    <div class="highlight" style="background: #e8f5e8; border-color: #27ae60;">
+        <h3>✨ Recognition Summary</h3>
+        <p>Consistent excellence in delivery, demonstrated through TOP EXEMPLARY ratings and quarterly "Highly Valuable" feedback, reflecting strong technical contributions and professional growth throughout the sprint period.</p>
+    </div>
+</div>
+
+<div class="slide">
+    <h1>🌟 NAGP Program – Growth Milestone</h1>
+
+    <div class="nagp-box">
+        <h2 style="margin: 0; color: white;">🏆 NAGP (Nagarro Growth Program) – Under Screening</h2>
+        <p style="font-size: 1.3em; margin: 15px 0;">Elite accelerated growth & leadership development track – Screening Process in Progress</p>
+    </div>
+
+    <div class="story-grid">
+        <div class="story-card" style="border-left-color: #e74c3c;">
+            <h4>🎯 Program Focus</h4>
+            <ul>
+                <li>Leadership & management development</li>
+                <li>Strategic thinking & innovation</li>
+                <li>Cross-functional collaboration mastery</li>
+            </ul>
+        </div>
+        <div class="story-card" style="border-left-color: #27ae60;">
+            <h4>📈 Growth Impact</h4>
+            <ul>
+                <li>Accelerated career growth pathway</li>
+                <li>Senior leadership mentorship access</li>
+                <li>Expanded professional network</li>
+            </ul>
+        </div>
+        <div class="story-card" style="border-left-color: #8e44ad;">
+            <h4>🚀 Future Readiness</h4>
+            <ul>
+                <li>Drive technical transformation</li>
+                <li>Lead high-performing teams</li>
+                <li>Bridge technology & business goals</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="highlight">
+        <h3>✨ NAGP validates proven performance + high potential = exceptional long-term value</h3>
+    </div>
+</div>
+
+<div class="slide">
+    <h1>🔮 Upcoming Agenda & Growth Roadmap</h1>
+
+    <div class="future-box">
+        <h2 style="margin: 0 0 15px 0; color: white;">🎯 Planned Level-Ups – AI Focus for Next Months</h2>
+        <p style="font-size: 1.1em;">Continuing to invest in AI/ML skills to drive innovation and bring cutting-edge capabilities to the team</p>
+    </div>
+
+    <div class="story-grid">
+        <div class="story-card">
+            <h4>🤖 Advanced AI Development</h4>
+            <ul>
+                <li>Enterprise AI solution architecture</li>
+                <li>MLOps & model deployment strategies</li>
+                <li>AI-powered automation initiatives</li>
+            </ul>
+        </div>
+        <div class="story-card">
+            <h4>☁️ Cloud & Architecture</h4>
+            <ul>
+                <li>Advanced Azure certifications</li>
+                <li>Cloud-native application design</li>
+                <li>Microservices & containerization</li>
+            </ul>
+        </div>
+        <div class="story-card">
+            <h4>👥 Leadership & NAGP Goals</h4>
+            <ul>
+                <li>Technical team leadership</li>
+                <li>Cross-functional project delivery</li>
+                <li>Mentoring & knowledge sharing</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="stats">
+        <div class="stat-box" style="background: linear-gradient(45deg, #8e44ad, #9b59b6);">
+            <div class="stat-number">5+</div>
+            <div>AI Certs Done</div>
+        </div>
+        <div class="stat-box" style="background: linear-gradient(45deg, #e74c3c, #c0392b);">
+            <div class="stat-number">NAGP</div>
+            <div>Screening</div>
+        </div>
+        <div class="stat-box" style="background: linear-gradient(45deg, #27ae60, #2ecc71);">
+            <div class="stat-number">AI</div>
+            <div>Next Focus Area</div>
+        </div>
+    </div>
+</div>
+
+<div class="slide">
+    <h1>📈 Growth & Progress Dashboard</h1>
+
+    <h2>🚀 6-Month Growth Journey</h2>
+    <div class="charts-grid">
+        <div class="chart-container">
+            <canvas id="storiesChart"></canvas>
+        </div>
+        <div class="chart-container">
+            <canvas id="pointsChart"></canvas>
+        </div>
+    </div>
+
+    <div class="charts-grid">
+        <div class="chart-container">
+            <canvas id="skillsChart"></canvas>
+        </div>
+        <div class="chart-container">
+            <canvas id="growthChart"></canvas>
+        </div>
+    </div>
+
+    <div class="highlight" style="background: #e3f2fd; border-color: #2196f3;">
+        <h3>✨ Key Growth Metrics</h3>
+        <ul>
+            <li><strong>Stories Progress:</strong> Consistent delivery with Story 15 completed and Story 19 in progress</li>
+            <li><strong>Story Points Velocity:</strong> 39 story points delivered across 6 months (~6.5 pts/month average)</li>
+            <li><strong>Skills Development:</strong> 5+ AI certifications completed, showcasing continuous learning commitment</li>
+            <li><strong>Career Progression:</strong> From onboarding to NAGP screening — rapid growth trajectory</li>
+        </ul>
+    </div>
+</div>
+
+<div class="slide">
+    <h1 class="center" style="color: #27ae60;">🎉 Sprint Success!</h1>
+    
+    <div class="center" style="margin: 60px 0;">
+        <div style="background: linear-gradient(45deg, #667eea, #764ba2); color: white; padding: 30px; border-radius: 15px; margin: 30px auto; max-width: 700px;">
+            <h2 style="margin: 0 0 20px 0; color: white;">Complete Success Summary</h2>
+            <div style="display: flex; justify-content: space-around; margin: 20px 0;">
+                <div>
+                    <div style="font-size: 2em; font-weight: bold;">17</div>
+                    <div>Stories Delivered</div>
+                </div>
+                <div>
+                    <div style="font-size: 2em; font-weight: bold;">39 pts</div>
+                    <div>Story Points</div>
+                </div>
+                <div>
+                    <div style="font-size: 2em; font-weight: bold;">5+</div>
+                    <div>AI Certifications</div>
+                </div>
+                <div>
+                    <div style="font-size: 2em; font-weight: bold;">NAGP</div>
+                    <div>Leadership Track</div>
+                </div>
+            </div>
+            <p style="font-size: 1.2em; margin: 15px 0; font-style: italic;">"Delivering excellence today while building tomorrow's capabilities"</p>
+        </div>
+    </div>
+
+    <div class="highlight" style="background: #e3f2fd; border-color: #2196f3;">
+        <h3 class="center">🚀 Ready to Lead the Future!</h3>
+        <div class="center">
+            <p>✓ Proven delivery excellence — 17 stories, 39 story points, zero production incidents</p>
+            <p>✓ Full-stack impact — UI, APIs, databases, DevOps, monitoring & DR readiness</p>
+            <p>✓ AI & GenAI certified — 5+ certifications including Azure AZ-900</p>
+            <p>✓ NAGP candidate — Under screening for leadership growth program</p>
+            <p>✓ Continuous learner — AI roadmap for upcoming months</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Productivity presentation loaded successfully!');
+
+        // Stories Progress Over Time
+        const storiesCtx = document.getElementById('storiesChart');
+        if (storiesCtx) {
+            new Chart(storiesCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Oct 2025', 'Nov 2025', 'Dec 2025', 'Jan 2026', 'Feb 2026', 'Mar 2026'],
+                    datasets: [{
+                        label: 'Stories Delivered',
+                        data: [2, 5, 9, 13, 16, 18],
+                        borderColor: '#3498db',
+                        backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.4,
+                        pointBackgroundColor: '#3498db',
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: true, labels: { font: { size: 12, weight: 'bold' } } },
+                        title: { display: true, text: 'Stories Delivery Progress', font: { size: 14, weight: 'bold' } }
+                    },
+                    scales: {
+                        y: { beginAtZero: true, max: 20, ticks: { font: { size: 11 } } },
+                        x: { ticks: { font: { size: 11 } } }
+                    }
+                }
+            });
+        }
+
+        // Story Points Velocity
+        const pointsCtx = document.getElementById('pointsChart');
+        if (pointsCtx) {
+            new Chart(pointsCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Oct 2025', 'Nov 2025', 'Dec 2025', 'Jan 2026', 'Feb 2026'],
+                    datasets: [{
+                        label: 'Story Points',
+                        data: [5, 8, 10, 8, 6],
+                        backgroundColor: ['#27ae60', '#2ecc71', '#27ae60', '#2ecc71', '#27ae60'],
+                        borderColor: '#27ae60',
+                        borderWidth: 2,
+                        borderRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: true, labels: { font: { size: 12, weight: 'bold' } } },
+                        title: { display: true, text: 'Monthly Story Points Velocity', font: { size: 14, weight: 'bold' } }
+                    },
+                    scales: {
+                        y: { beginAtZero: true, ticks: { font: { size: 11 } } },
+                        x: { ticks: { font: { size: 11 } } }
+                    }
+                }
+            });
+        }
+
+        // Skills & Certifications Growth
+        const skillsCtx = document.getElementById('skillsChart');
+        if (skillsCtx) {
+            new Chart(skillsCtx, {
+                type: 'radar',
+                data: {
+                    labels: ['Backend Dev', 'Frontend Dev', 'DevOps', 'Testing', 'AI/ML', 'Cloud'],
+                    datasets: [{
+                        label: 'Skills Proficiency',
+                        data: [90, 75, 85, 80, 88, 80],
+                        borderColor: '#8e44ad',
+                        backgroundColor: 'rgba(142, 68, 173, 0.2)',
+                        borderWidth: 2,
+                        pointBackgroundColor: '#8e44ad',
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        pointRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: true, labels: { font: { size: 12, weight: 'bold' } } },
+                        title: { display: true, text: 'Technical Skills Development', font: { size: 14, weight: 'bold' } }
+                    },
+                    scales: {
+                        r: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: { font: { size: 10 } }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Career Growth Timeline
+        const growthCtx = document.getElementById('growthChart');
+        if (growthCtx) {
+            new Chart(growthCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Development', 'Infrastructure', 'Onboarding', 'Learning', 'Future'],
+                    datasets: [{
+                        data: [39, 15, 10, 20, 16],
+                        backgroundColor: [
+                            '#3498db',
+                            '#27ae60',
+                            '#f39c12',
+                            '#8e44ad',
+                            '#e74c3c'
+                        ],
+                        borderColor: '#fff',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: true, position: 'bottom', labels: { font: { size: 11, weight: 'bold' }, padding: 15 } },
+                        title: { display: true, text: 'Growth Areas Distribution', font: { size: 14, weight: 'bold' } }
+                    }
+                }
+            });
+        }
+    });
+</script>
+
+</body>
+</html>

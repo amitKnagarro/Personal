@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nagarro SE - Profitability Analysis 2025</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        
+        header h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .tab-btn {
+            padding: 12px 24px;
+            background: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .tab-btn.active {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .tab-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .metric-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .metric-label {
+            color: #666;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        
+        .metric-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+        
+        .metric-change {
+            font-size: 0.9em;
+            color: #27ae60;
+            font-weight: 600;
+        }
+        
+        .metric-change.negative {
+            color: #e74c3c;
+        }
+        
+        .chart-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            position: relative;
+            height: 400px;
+        }
+        
+        .table-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        tr:hover {
+            background: #f5f5f5;
+        }
+        
+        .insight-box {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .insight-box.positive {
+            border-left-color: #27ae60;
+        }
+        
+        .insight-box.warning {
+            border-left-color: #f39c12;
+        }
+        
+        .insight-title {
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        
+        .insight-content {
+            color: #666;
+            font-size: 0.95em;
+        }
+        
+        .summary-section {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .summary-section h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .summary-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .summary-section li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #555;
+        }
+        
+        .summary-section li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        footer {
+            text-align: center;
+            color: white;
+            padding: 30px;
+            margin-top: 50px;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .chart-container {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Nagarro SE</h1>
+            <p>Financial Profitability Analysis - Q1, Q2, Q3 2025</p>
+        </header>
+        
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="showTab('overview')">Overview</button>
+            <button class="tab-btn" onclick="showTab('quarterly')">Quarterly Data</button>
+            <button class="tab-btn" onclick="showTab('charts')">Charts</button>
+            <button class="tab-btn" onclick="showTab('insights')">Key Insights</button>
+        </div>
+        
+        <!-- OVERVIEW TAB -->
+        <div id="overview" class="tab-content active">
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Q3 2025 Revenue</div>
+                    <div class="metric-value">€254.6m</div>
+                    <div class="metric-change">+9.4% YoY (constant currency)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Q3 Gross Profit</div>
+                    <div class="metric-value">€84.2m</div>
+                    <div class="metric-change">+10.0% YoY</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Q3 Net Profit</div>
+                    <div class="metric-value">€21.4m</div>
+                    <div class="metric-change positive">+68.0% YoY</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Q3 Adjusted EBITDA</div>
+                    <div class="metric-value">€44.0m</div>
+                    <div class="metric-change">+27.2% YoY</div>
+                </div>
+            </div>
+            
+            <div class="summary-section">
+                <h3>Executive Summary</h3>
+                <ul>
+                    <li>Strong Q3 performance with consistent revenue growth across all quarters</li>
+                    <li>Gross margins improved from 30.6% (Q1) to 33.1% (Q3)</li>
+                    <li>Significant profitability recovery in Q3 after FX-challenged H1</li>
+                    <li>9-month net profit maintained at €41m despite currency headwinds</li>
+                    <li>Operating cash flow improved to €77.1m in 9M 2025 vs €64.9m in 9M 2024</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- QUARTERLY TAB -->
+        <div id="quarterly" class="tab-content">
+            <div class="table-container">
+                <h3 style="margin-bottom: 20px; color: #667eea;">Quarterly Performance Summary (€ millions)</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Q1 2025</th>
+                            <th>Q2 2025</th>
+                            <th>Q3 2025</th>
+                            <th>Q3 2024</th>
+                            <th>YoY Growth (Q3)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Revenue</strong></td>
+                            <td>246.9</td>
+                            <td>252.0</td>
+                            <td>254.6</td>
+                            <td>242.9</td>
+                            <td>+4.8%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Gross Profit</strong></td>
+                            <td>75.5</td>
+                            <td>83.7</td>
+                            <td>84.2</td>
+                            <td>76.5</td>
+                            <td>+10.0%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Gross Margin %</strong></td>
+                            <td>30.6%</td>
+                            <td>33.2%</td>
+                            <td>33.1%</td>
+                            <td>31.5%</td>
+                            <td>+160 bps</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Adjusted EBITDA</strong></td>
+                            <td>30.2</td>
+                            <td>30.5</td>
+                            <td>44.0</td>
+                            <td>34.6</td>
+                            <td>+27.2%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Adj. EBITDA Margin %</strong></td>
+                            <td>12.2%</td>
+                            <td>12.1%</td>
+                            <td>17.3%</td>
+                            <td>14.3%</td>
+                            <td>+300 bps</td>
+                        </tr>
+                        <tr>
+                            <td><strong>EBIT</strong></td>
+                            <td>24.1</td>
+                            <td>23.4</td>
+                            <td>34.9</td>
+                            <td>22.5</td>
+                            <td>+55.0%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Net Profit</strong></td>
+                            <td>11.2</td>
+                            <td>8.3</td>
+                            <td>21.4</td>
+                            <td>12.7</td>
+                            <td>+68.0%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="table-container">
+                <h3 style="margin-bottom: 20px; color: #667eea;">Nine-Month (9M) Performance (€ millions)</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>9M 2025</th>
+                            <th>9M 2024</th>
+                            <th>YoY Growth</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Revenue</strong></td>
+                            <td>753.4</td>
+                            <td>725.4</td>
+                            <td>+3.9%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Gross Profit</strong></td>
+                            <td>243.5</td>
+                            <td>223.5</td>
+                            <td>+9.0%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Adjusted EBITDA</strong></td>
+                            <td>104.8</td>
+                            <td>109.3</td>
+                            <td>-4.1%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Net Profit</strong></td>
+                            <td>41.0</td>
+                            <td>41.3</td>
+                            <td>-0.8%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- CHARTS TAB -->
+        <div id="charts" class="tab-content">
+            <div class="chart-container">
+                <canvas id="revenueChart"></canvas>
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="profitChart"></canvas>
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="marginChart"></canvas>
+            </div>
+        </div>
+        
+        <!-- INSIGHTS TAB -->
+        <div id="insights" class="tab-content">
+            <div class="insight-box positive">
+                <div class="insight-title">✅ Strong Q3 Recovery</div>
+                <div class="insight-content">Net profit surged 68% YoY and Adjusted EBITDA grew 27.2%, indicating strong operational performance and recovery from H1 FX headwinds.</div>
+            </div>
+            
+            <div class="insight-box positive">
+                <div class="insight-title">✅ Expanding Margins</div>
+                <div class="insight-content">Gross margin improved 160 basis points YoY (Q3: 33.1% vs 31.5%), demonstrating improved operational efficiency and better service delivery economics.</div>
+            </div>
+            
+            <div class="insight-box warning">
+                <div class="insight-title">⚠️ FX Impact on 9M Results</div>
+                <div class="insight-content">Currency revaluation losses of €19.7m (US dollar weakening vs Euro) impacted 9M Adjusted EBITDA, causing it to decline 4.1% despite strong operational performance.</div>
+            </div>
+            
+            <div class="insight-box positive">
+                <div class="insight-title">✅ Consistent Revenue Growth</div>
+                <div class="insight-content">Quarter-over-quarter revenue growth: Q1 €246.9m → Q2 €252.0m → Q3 €254.6m. Q3 revenue +9.4% YoY in constant currency terms.</div>
+            </div>
+            
+            <div class="insight-box positive">
+                <div class="insight-title">✅ Improved Cash Flow</div>
+                <div class="insight-content">Operating cash inflow in 9M 2025 increased to €77.1m from €64.9m in 9M 2024, up 18.7% despite challenging macro conditions.</div>
+            </div>
+            
+            <div class="insight-box">
+                <div class="insight-title">📊 Overall Assessment</div>
+                <div class="insight-content"><strong>Positive Trend:</strong> Nagarro demonstrates improving profitability with strong momentum heading into Q4 2025. Gross margins expanding and operational leverage improving despite macroeconomic challenges. The company successfully navigated FX headwinds and is positioned well for continued growth.</div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Nagarro SE Financial Analysis | Data sourced from official quarterly reports | March 2026</p>
+    </footer>
+    
+    <script>
+        function showTab(tabName) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+            
+            // Trigger chart redraw if charts tab
+            if (tabName === 'charts') {
+                setTimeout(() => {
+                    revenueChart.resize();
+                    profitChart.resize();
+                    marginChart.resize();
+                }, 100);
+            }
+        }
+        
+        // Revenue Chart
+        const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+        const revenueChart = new Chart(revenueCtx, {
+            type: 'line',
+            data: {
+                labels: ['Q1 2025', 'Q2 2025', 'Q3 2025'],
+                datasets: [{
+                    label: 'Revenue (€m)',
+                    data: [246.9, 252.0, 254.6],
+                    borderColor: '#667eea',
+                    backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 6,
+                    pointBackgroundColor: '#667eea',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: { font: { size: 12 } }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Quarterly Revenue Trend',
+                        font: { size: 14, weight: 'bold' }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 240
+                    }
+                }
+            }
+        });
+        
+        // Net Profit Chart
+        const profitCtx = document.getElementById('profitChart').getContext('2d');
+        const profitChart = new Chart(profitCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Q1 2025', 'Q2 2025', 'Q3 2025'],
+                datasets: [
+                    {
+                        label: 'Net Profit (€m)',
+                        data: [11.2, 8.3, 21.4],
+                        backgroundColor: '#667eea',
+                        borderRadius: 5
+                    },
+                    {
+                        label: 'Adjusted EBITDA (€m)',
+                        data: [30.2, 30.5, 44.0],
+                        backgroundColor: '#764ba2',
+                        borderRadius: 5
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: { font: { size: 12 } }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Net Profit & Adjusted EBITDA Comparison',
+                        font: { size: 14, weight: 'bold' }
+                    }
+                }
+            }
+        });
+        
+        // Margin Chart
+        const marginCtx = document.getElementById('marginChart').getContext('2d');
+        const marginChart = new Chart(marginCtx, {
+            type: 'line',
+            data: {
+                labels: ['Q1 2025', 'Q2 2025', 'Q3 2025'],
+                datasets: [
+                    {
+                        label: 'Gross Margin %',
+                        data: [30.6, 33.2, 33.1],
+                        borderColor: '#27ae60',
+                        backgroundColor: 'rgba(39, 174, 96, 0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 6,
+                        pointBackgroundColor: '#27ae60'
+                    },
+                    {
+                        label: 'Adj. EBITDA Margin %',
+                        data: [12.2, 12.1, 17.3],
+                        borderColor: '#f39c12',
+                        backgroundColor: 'rgba(243, 156, 18, 0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 6,
+                        pointBackgroundColor: '#f39c12'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: { font: { size: 12 } }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Profitability Margins Trend',
+                        font: { size: 14, weight: 'bold' }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
